@@ -244,6 +244,28 @@
             </div>
 
 
+            <div id="modal_confirmation" class="modal fade" tabindex="-1" role="dialog"><!--modal-->
+                <div class="modal-dialog modal-sm">
+                    <div class="modal-content"><!---content--->
+                        <div class="modal-header">
+                            <button type="button" class="close"   data-dismiss="modal" aria-hidden="true">X</button>
+                            <h4 class="modal-title"><span id="modal_mode"> </span>Confirm Deletion</h4>
+
+                        </div>
+
+                        <div class="modal-body">
+                            <p id="modal-body-message">Are you sure ?</p>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button id="btn_yes" type="button" class="btn btn-danger" data-dismiss="modal">Yes</button>
+                            <button id="btn_close" type="button" class="btn btn-default" data-dismiss="modal">No</button>
+                        </div>
+                    </div><!---content---->
+                </div>
+            </div><!---modal-->
+
+
 
 
 
@@ -358,29 +380,24 @@
             } );
 
 
-                $('#btn_new').click(function(){
+            $('#btn_new').click(function(){
                     _txnMode="new";
                     showList(false);
-                });
+            });
 
-                $('#btn_browse').click(function(event){
-
+             $('#btn_browse').click(function(event){
                     event.preventDefault();
                     $('input[name="file_upload[]"]').click();
+             });
 
 
 
-                });
-
-
-
-                $('#tbl_customers tbody').on('click','button[name="edit_info"]',function(){
+            $('#tbl_customers tbody').on('click','button[name="edit_info"]',function(){
                     ///alert("ddd");
                     _txnMode="edit";
                     _selectRowObj=$(this).closest('tr');
                     var data=dt.row(_selectRowObj).data();
                     _selectedID=data.customer_id;
-
 
                     $('input,textarea').each(function(){
                         var _elem=$(this);
@@ -391,10 +408,25 @@
                         });
                     });
 
+                    $('img[name="img_customer"]').attr('src',data.photo_path);
                     showList(false);
 
-                });
+            });
 
+            $('#tbl_customers tbody').on('click','button[name="remove_info"]',function(){
+                _selectRowObj=$(this).closest('tr');
+                var data=dt.row(_selectRowObj).data();
+                _selectedID=data.customer_id;
+
+                $('#modal_confirmation').modal('show');
+            });
+
+            $('#btn_yes').click(function(){
+                removeCustomer().done(function(response){
+                    showNotification(response);
+                    dt.row(_selectRowObj).remove().draw();
+                });
+            });
 
 
                 $('input[name="file_upload[]"]').change(function(event){
@@ -511,7 +543,14 @@
             });
         };
 
-
+        var removeCustomer=function(){
+            return $.ajax({
+                "dataType":"json",
+                "type":"POST",
+                "url":"customers/transaction/delete",
+                "data":{customer_id : _selectedID}
+            });
+        };
 
         var showList=function(b){
             if(b){
@@ -540,6 +579,7 @@
 
         var clearFields=function(){
             $('input[required],textarea','#frm_customer').val('');
+            $('form').find('input:first').focus();
         };
 
 
@@ -574,7 +614,7 @@
                     '</tbody></table><br />';
 
 
-            return '<div class="contact-box  animated fadeInRight">' +
+            /*return '<div class="contact-box  animated fadeInRight">' +
                         '<a href="#"> ' +
                             '<div class="col-sm-7 col-sm-offset-1"> ' +
                                 '<h3><strong>'+ d.customer_name+'</strong></h3> ' +
@@ -591,7 +631,7 @@
                                     '<img src="assets/demo/avatar/avatar_15.png" class="img-responsive img-circle"  style="height:150%;">'+
                                 '</div>'+
                         '</a> ' +
-                    '</div>';
+                    '</div>';*/
 
 
 

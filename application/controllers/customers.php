@@ -59,6 +59,24 @@ class Customers extends CORE_Controller {
 
                 break;
             //****************************************************************************************************************
+            case 'delete':
+                $m_customers=$this->customers_model;
+                $m_photos=$this->customer_photos_model;
+                $customer_id=$this->input->post('customer_id',TRUE);
+
+                $m_customers->is_deleted=1;
+                if($m_customers->modify($customer_id)){
+                    $response['title']='Success!';
+                    $response['stat']='success';
+                    $response['msg']='Customer information successfully deleted.';
+                    //$response['row_updated']=$m_customers->get_customer_list($customer_id);
+                    echo json_encode($response);
+                }
+
+
+
+                break;
+            //****************************************************************************************************************
             case 'update':
                 $m_customers=$this->customers_model;
                 $m_photos=$this->customer_photos_model;
