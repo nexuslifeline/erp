@@ -522,7 +522,7 @@ $(document).ready(function(){
     };
 
 
-    var createsupplier=function(){
+    var createSupplier=function(){
         var _data=$('#frm_supplier').serializeArray();
         _data.push({name : "photo_path" ,value : $('img[name="img_supplier"]').attr('src')});
 
@@ -535,7 +535,7 @@ $(document).ready(function(){
         });
     };
 
-    var updatesupplier=function(){
+    var updateSupplier=function(){
         var _data=$('#frm_supplier').serializeArray();
         _data.push({name : "photo_path" ,value : $('img[name="img_supplier"]').attr('src')});
         _data.push({name : "supplier_id" ,value : _selectedID});
@@ -549,7 +549,7 @@ $(document).ready(function(){
         });
     };
 
-    var removesupplier=function(){
+    var removeSupplier=function(){
         return $.ajax({
             "dataType":"json",
             "type":"POST",

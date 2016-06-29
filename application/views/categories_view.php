@@ -75,118 +75,144 @@
 <div class="static-content-wrapper white-bg">
 
 
-    <div class="static-content"  >
-        <div class="page-content"><!-- #page-content -->
+<div class="static-content"  >
+    <div class="page-content"><!-- #page-content -->
 
-            <ol class="breadcrumb">
-                <li><a href="dashboard">Dashboard</a></li>
-                <li><a href="categories">Category</a></li>
-            </ol>
-
-
-            <div class="container-fluid">
-                <div data-widget-group="group1">
-                    <div class="row">
-                        <div class="col-md-12">
-
-                            <div id="div_category_list">
-                                <div class="panel panel-default">
-                                    <div class="panel-body table-responsive">
-                                        <table id="tbl_categories" class="table table-striped table-bordered" cellspacing="0" width="100%">
-                                            <thead>
-                                            <tr>
-                                                <th></th>
-                                                <th>Category Code</th>
-                                                <th>Category Name</th>
-                                                <th>Category Description</th>
-                                                <th><center>Action</center></th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
+        <ol class="breadcrumb">
+            <li><a href="dashboard">Dashboard</a></li>
+            <li><a href="categories">Categories</a></li>
+        </ol>
 
 
+        <div class="container-fluid">
+            <div data-widget-group="group1">
+                <div class="row">
+                    <div class="col-md-12">
 
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                    <div class="panel-footer"></div>
+                        <div id="div_category_list">
+                            <div class="panel panel-default">
+                                <div class="panel-body table-responsive">
+                                    <table id="tbl_categories" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                                        <thead>
+                                        <tr>
+                                            <th></th>
+                                            <th>Category Code</th>
+                                            <th>Category Name</th>
+                                            <th>Category Description</th>
+                                            <th><center>Action</center></th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+
+
+
+                                        </tbody>
+                                    </table>
                                 </div>
-
+                                <div class="panel-footer"></div>
                             </div>
 
-
-                            <div id="div_category_fields" style="display: none;">
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <h2>Category Information</h2>
-                                        <div class="panel-ctrls" data-actions-container="" data-action-collapse='{"target": ".panel-body"}'></div>
-                                    </div>
-
-                                    <div class="panel-body">
+                        </div>
 
 
-                                        <form id="frm_category" role="form" class="form-horizontal row-border">
+                        <div id="div_category_fields" style="display: none;">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h2>Category Information</h2>
+                                    <div class="panel-ctrls" data-actions-container="" data-action-collapse='{"target": ".panel-body"}'></div>
+                                </div>
 
-                                            <div class="form-group">
-                                                <label class="col-md-2 control-label">Category Code :</label>
-                                                <div class="col-md-9">
-                                                    <div class="input-group">
+                                <div class="panel-body">
+
+
+                                    <form id="frm_category" role="form" class="form-horizontal row-border">
+
+                                        <div class="form-group">
+                                            <label class="col-md-2 control-label">Category Code :</label>
+                                            <div class="col-md-9">
+                                                <div class="input-group">
                                                                 <span class="input-group-addon">
                                                                     <i class="fa fa-envelope-o"></i>
                                                                 </span>
-                                                        <input type="text" name="category_code" class="form-control" readonly>
-                                                    </div>
+                                                    <input type="text" name="category_code" class="form-control" readonly>
                                                 </div>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label class="col-md-2 control-label">* Category Name :</label>
-                                                <div class="col-md-9">
-                                                    <div class="input-group">
-                                                                <span class="input-group-addon">
-                                                                    <i class="fa fa-users"></i>
-                                                                </span>
-                                                        <input type="text" name="category_name" class="form-control" placeholder="category Name" data-error-msg="category name is required!" required>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label class="col-md-2 control-label">* Category Description :</label>
-                                                <div class="col-md-9">
-                                                    <textarea name="category_desc" class="form-control" data-error-msg="Category Description is required!" required></textarea>
-                                                </div>
-                                            </div>
-
-                                            <br /><br />
-
-                                        </form>
-
-                                    </div>
-                                    <div class="panel-footer">
-                                        <div class="row">
-                                            <div class="col-sm-10 col-sm-offset-2">
-                                                <button id="btn_save" class="btn-primary btn" style="text-transform: capitalize;font-family: Tahoma, Georgia, Serif;""><span class=""></span>  Save Changes</button>
-                                                <button id="btn_cancel" class="btn-default btn" style="text-transform: capitalize;font-family: Tahoma, Georgia, Serif;"">Cancel</button>
-
                                             </div>
                                         </div>
 
+                                        <div class="form-group">
+                                            <label class="col-md-2 control-label">* Category Name :</label>
+                                            <div class="col-md-9">
+                                                <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="fa fa-users"></i>
+                                                                </span>
+                                                    <input type="text" name="category_name" class="form-control" placeholder="category Name" data-error-msg="category name is required!" required>
+                                                </div>
+                                            </div>
+                                        </div>
 
+                                        <div class="form-group">
+                                            <label class="col-md-2 control-label">* Category Description :</label>
+                                            <div class="col-md-9">
+                                                <textarea name="category_desc" class="form-control" data-error-msg="category address is required!" required></textarea>
+                                            </div>
+                                        </div>
+
+                                        <br /><br />
+
+
+
+                                    </form>
+
+
+
+
+                                </div>
+                                <div class="panel-footer">
+                                    <div class="row">
+                                        <div class="col-sm-10 col-sm-offset-2">
+                                            <button id="btn_save" class="btn-primary btn" style="text-transform: capitalize;font-family: Tahoma, Georgia, Serif;""><span class=""></span>  Save Changes</button>
+                                            <button id="btn_cancel" class="btn-default btn" style="text-transform: capitalize;font-family: Tahoma, Georgia, Serif;"">Cancel</button>
+                                        </div>
                                     </div>
+
+
                                 </div>
                             </div>
-
-
-
-
                         </div>
+
+
+
+
                     </div>
                 </div>
-            </div> <!-- .container-fluid -->
+            </div>
+        </div> <!-- .container-fluid -->
 
-        </div> <!-- #page-content -->
+    </div> <!-- #page-content -->
+</div>
+
+
+<div id="modal_confirmation" class="modal fade" tabindex="-1" role="dialog"><!--modal-->
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content"><!---content--->
+            <div class="modal-header">
+                <button type="button" class="close"   data-dismiss="modal" aria-hidden="true">X</button>
+                <h4 class="modal-title"><span id="modal_mode"> </span>Confirm Deletion</h4>
+
+            </div>
+
+            <div class="modal-body">
+                <p id="modal-body-message">Are you sure ?</p>
+            </div>
+
+            <div class="modal-footer">
+                <button id="btn_yes" type="button" class="btn btn-danger" data-dismiss="modal">Yes</button>
+                <button id="btn_close" type="button" class="btn btn-default" data-dismiss="modal">No</button>
+            </div>
+        </div><!---content---->
     </div>
+</div><!---modal-->
 
 
 
@@ -194,14 +220,14 @@
 
 
 
-    <footer role="contentinfo">
-        <div class="clearfix">
-            <ul class="list-unstyled list-inline pull-left">
-                <li><h6 style="margin: 0;">&copy; 2016 - Paul Christian Rueda</h6></li>
-            </ul>
-            <button class="pull-right btn btn-link btn-xs hidden-print" id="back-to-top"><i class="ti ti-arrow-up"></i></button>
-        </div>
-    </footer>
+<footer role="contentinfo">
+    <div class="clearfix">
+        <ul class="list-unstyled list-inline pull-left">
+            <li><h6 style="margin: 0;">&copy; 2016 - Paul Christian Rueda</h6></li>
+        </ul>
+        <button class="pull-right btn btn-link btn-xs hidden-print" id="back-to-top"><i class="ti ti-arrow-up"></i></button>
+    </div>
+</footer>
 
 
 
@@ -225,7 +251,7 @@
 
 <script>
 $(document).ready(function(){
-    var dt;
+    var dt; var _txnMode; var _selectedID; var _selectRowObj;
 
 
 
@@ -261,7 +287,7 @@ $(document).ready(function(){
 
         var createToolBarButton=function(){
             var _btnNew='<button class="btn btn-primary"  id="btn_new" style="text-transform: capitalize;font-family: Tahoma, Georgia, Serif;" data-toggle="modal" data-target="" data-placement="left" title="New category" >'+
-                '<i class="fa fa-users"></i> New Category</button>';
+                '<i class="fa fa-users"></i> New category</button>';
             $("div.toolbar").html(_btnNew);
         }();
 
@@ -303,16 +329,57 @@ $(document).ready(function(){
 
 
         $('#btn_new').click(function(){
+            _txnMode="new";
             showList(false);
         });
 
-        $('#btn_browse').click(function(event){
+//        $('#btn_browse').click(function(event){
+//            event.preventDefault();
+//            $('input[name="file_upload[]"]').click();
+//        });
+//
+//
+//        $('#btn_remove_photo').click(function(event){
+//            event.preventDefault();
+//            $('img[name="img_category"]').attr('src','assets/img/anonymous-icon.png');
+//        });
 
-            event.preventDefault();
-            $('input[name="file_upload[]"]').click();
 
 
+        $('#tbl_categories tbody').on('click','button[name="edit_info"]',function(){
+            ///alert("ddd");
+            _txnMode="edit";
+            _selectRowObj=$(this).closest('tr');
+            var data=dt.row(_selectRowObj).data();
+            _selectedID=data.category_id;
 
+            $('input,textarea').each(function(){
+                var _elem=$(this);
+                $.each(data,function(name,value){
+                    if(_elem.attr('name')==name){
+                        _elem.val(value);
+                    }
+                });
+            });
+
+//            $('img[name="img_category"]').attr('src',data.photo_path);
+            showList(false);
+
+        });
+
+        $('#tbl_categories tbody').on('click','button[name="remove_info"]',function(){
+            _selectRowObj=$(this).closest('tr');
+            var data=dt.row(_selectRowObj).data();
+            _selectedID=data.category_id;
+
+            $('#modal_confirmation').modal('show');
+        });
+
+        $('#btn_yes').click(function(){
+            removeCategory().done(function(response){
+                showNotification(response);
+                dt.row(_selectRowObj).remove().draw();
+            });
         });
 
 
@@ -342,8 +409,8 @@ $(document).ready(function(){
                     //console.log(response);
                     //alert(response.path);
                     $('#div_img_loader').hide();
-                    $('#div_img_categories').show();
-                    $('img[name="img_categories"]').attr('src',response.path);
+                    $('#div_img_category').show();
+//                    $('img[name="img_category"]').attr('src',response.path);
 
                 }
             });
@@ -357,13 +424,25 @@ $(document).ready(function(){
         $('#btn_save').click(function(){
 
             if(validateRequiredFields()){
-                createCategory().done(function(response){
-                    showNotification(response);
-                    dt.row.add(response.row_added[0]).draw();
-                    clearFields();
-                }).always(function(){
-                    showSpinningProgress($('#btn_save'));
-                });
+                if(_txnMode=="new"){
+                    createCategory().done(function(response){
+                        showNotification(response);
+                        dt.row.add(response.row_added[0]).draw();
+                        clearFields();
+                    }).always(function(){
+                        showSpinningProgress($('#btn_save'));
+                    });
+                }else{
+                    updateCategory().done(function(response){
+                        showNotification(response);
+                        dt.row(_selectRowObj).data(response.row_updated[0]).draw();
+                        clearFields();
+                        showList(true);
+                    }).always(function(){
+                        showSpinningProgress($('#btn_save'));
+                    });
+                }
+
             }
 
         });
@@ -393,6 +472,7 @@ $(document).ready(function(){
 
     var createCategory=function(){
         var _data=$('#frm_category').serializeArray();
+//        _data.push({name : "photo_path" ,value : $('img[name="img_category"]').attr('src')});
 
         return $.ajax({
             "dataType":"json",
@@ -403,7 +483,28 @@ $(document).ready(function(){
         });
     };
 
+    var updateCategory=function(){
+        var _data=$('#frm_category').serializeArray();
+//        _data.push({name : "photo_path" ,value : $('img[name="img_category"]').attr('src')});
+        _data.push({name : "category_id" ,value : _selectedID});
 
+        return $.ajax({
+            "dataType":"json",
+            "type":"POST",
+            "url":"categories/transaction/update",
+            "data":_data,
+            "beforeSend": showSpinningProgress($('#btn_save'))
+        });
+    };
+
+    var removeCategory=function(){
+        return $.ajax({
+            "dataType":"json",
+            "type":"POST",
+            "url":"categories/transaction/delete",
+            "data":{category_id : _selectedID}
+        });
+    };
 
     var showList=function(b){
         if(b){
@@ -432,29 +533,50 @@ $(document).ready(function(){
 
     var clearFields=function(){
         $('input[required],textarea','#frm_category').val('');
+        $('form').find('input:first').focus();
     };
 
 
     function format ( d ) {
         // `d` is the original data object for the row
         //alert(d.photo_path);
+        return '<br /><table style="margin-left:10%;width: 80%;">' +
+        '<thead>' +
+        '</thead>' +
+        '<tbody>' +
+        '<tr>' +
+        '<td width="20%">Category Code : </td><td width="50%"><b>'+ d.category_code+'</b></td>' +
+//        '<td rowspan="5" valign="top"><div class="avatar">'+
+//        '<img src="'+ d.photo_path+'" class="img-circle" style="margin-top:0px;height: 100px;width: 100px;">'+
+//        '</div></td>' +
+        '</tr>' +
+        '<tr>' +
+        '<td>Category Name : </td><td><b>'+ d.category_name+'</b></td>' +
+        '</tr>' +
+        '<tr>' +
+        '<td>Category Description : </td><td>'+ d.category_desc+'</td>' +
+        '</tr>' +
+        '</tbody></table><br />';
 
 
-
-        return '<div class="contact-box  animated fadeInRight">' +
-        '<a href="#"> ' +
-        '<div class="col-sm-8 col-sm-offset-1"> ' +
-        '<h3><strong>'+ d.category_name+'</strong></h3> ' +
-        '<p><i class="fa fa-map-marker"></i> '+ d.address+'</p><br> ' +
-        '<address> ' +
-        '<i class="fa fa-send"></i> '+ d.email_address+'<br> ' +
-        '<i class="fa fa-map-marker"></i> '+ d.mobile_no+'<br> ' +
-        '<i class="fa fa-list-alt"></i> '+ d.landline+'<br> ' +
-        '</address>' +
-        '</div> <div class="text-right"> ' +
-        '</div> ' +
-        '</a> ' +
-        '</div>';
+        /*return '<div class="contact-box  animated fadeInRight">' +
+         '<a href="#"> ' +
+         '<div class="col-sm-7 col-sm-offset-1"> ' +
+         '<h3><strong>'+ d.category_name+'</strong></h3> ' +
+         '<p><i class="fa fa-map-marker"></i> '+ d.address+'</p><br> ' +
+         '<address> ' +
+         '<i class="fa fa-send"></i> '+ d.email_address+'<br> ' +
+         '<i class="fa fa-map-marker"></i> '+ d.mobile_no+'<br> ' +
+         '<i class="fa fa-list-alt"></i> '+ d.landline+'<br> ' +
+         '</address>' +
+         '</div> <div class="text-right"> ' +
+         '</div> ' +
+         '<div class="col-sm-4"><br /> ' +
+         '<div class="text-center avatar">'+
+         '<img src="assets/demo/avatar/avatar_15.png" class="img-responsive img-circle"  style="height:150%;">'+
+         '</div>'+
+         '</a> ' +
+         '</div>';*/
 
 
 

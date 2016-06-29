@@ -14,13 +14,9 @@ class categories_model extends CORE_Model{
 
     function get_category_list($category_id=null){
         $sql="  SELECT
-                  a.*,b.photo_path
+                  a.*
                 FROM
                   categories as a
-                LEFT JOIN
-                    category_photos as b
-                ON
-                  a.category_id=b.category_id
                 WHERE
                     a.is_deleted=FALSE AND a.is_active=TRUE
                 ".($category_id==null?"":" AND a.category_id=$category_id")."
