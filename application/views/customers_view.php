@@ -391,6 +391,12 @@
              });
 
 
+            $('#btn_remove_photo').click(function(event){
+                event.preventDefault();
+                $('img[name="img_customer"]').attr('src','assets/img/anonymous-icon.png');
+            });
+
+
 
             $('#tbl_customers tbody').on('click','button[name="edit_info"]',function(){
                     ///alert("ddd");
