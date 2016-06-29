@@ -6,6 +6,7 @@ class Customers_model extends CORE_Model{
     protected  $pk_id="customer_id"; //primary key id
 
 
+
     function __construct()
     {
         // Call the Model constructor
@@ -28,7 +29,7 @@ class Customers_model extends CORE_Model{
         return $this->db->query($sql)->result();
     }
 
-    
+
 
 
 }

@@ -58,6 +58,31 @@ class Customers extends CORE_Controller {
                 echo json_encode($response);
 
                 break;
+            //****************************************************************************************************************
+            case 'update':
+                $m_customers=$this->customers_model;
+                $m_photos=$this->customer_photos_model;
+
+                $customer_id=$this->input->post('customer_id',TRUE);
+                $m_customers->customer_name=$this->input->post('customer_name',TRUE);
+                $m_customers->address=$this->input->post('address',TRUE);
+                $m_customers->email_address=$this->input->post('email_address',TRUE);
+                $m_customers->landline=$this->input->post('landline',TRUE);
+                $m_customers->mobile_no=$this->input->post('mobile_no',TRUE);
+                $m_customers->modify($customer_id);
+
+                $m_photos->delete_via_fk($customer_id);
+                $m_photos->customer_id=$customer_id;
+                $m_photos->photo_path=$this->input->post('photo_path',TRUE);
+                $m_photos->save();
+
+                $response['title']='Success!';
+                $response['stat']='success';
+                $response['msg']='Customer information successfully updated.';
+                $response['row_updated']=$m_customers->get_customer_list($customer_id);
+                echo json_encode($response);
+
+                break;
 
             //****************************************************************************************************************
             case 'upload':

@@ -224,11 +224,6 @@
                                                     <div class="col-sm-10 col-sm-offset-2">
                                                         <button id="btn_save" class="btn-primary btn" style="text-transform: capitalize;font-family: Tahoma, Georgia, Serif;""><span class=""></span>  Save Changes</button>
                                                         <button id="btn_cancel" class="btn-default btn" style="text-transform: capitalize;font-family: Tahoma, Georgia, Serif;"">Cancel</button>
-
-
-
-
-
                                                     </div>
                                                 </div>
 
@@ -285,7 +280,7 @@
 
 <script>
     $(document).ready(function(){
-        var dt;
+        var dt; var _txnMode; var _selectedID; var _selectRowObj;
 
 
 
@@ -364,6 +359,7 @@
 
 
                 $('#btn_new').click(function(){
+                    _txnMode="new";
                     showList(false);
                 });
 
@@ -375,6 +371,30 @@
 
 
                 });
+
+
+
+                $('#tbl_customers tbody').on('click','button[name="edit_info"]',function(){
+                    ///alert("ddd");
+                    _txnMode="edit";
+                    _selectRowObj=$(this).closest('tr');
+                    var data=dt.row(_selectRowObj).data();
+                    _selectedID=data.customer_id;
+
+
+                    $('input,textarea').each(function(){
+                        var _elem=$(this);
+                        $.each(data,function(name,value){
+                            if(_elem.attr('name')==name){
+                                _elem.val(value);
+                            }
+                        });
+                    });
+
+                    showList(false);
+
+                });
+
 
 
                 $('input[name="file_upload[]"]').change(function(event){
@@ -418,13 +438,25 @@
                 $('#btn_save').click(function(){
 
                     if(validateRequiredFields()){
-                        createCustomer().done(function(response){
-                            showNotification(response);
-                            dt.row.add(response.row_added[0]).draw();
-                            clearFields();
-                        }).always(function(){
-                            showSpinningProgress($('#btn_save'));
-                        });
+                        if(_txnMode=="new"){
+                            createCustomer().done(function(response){
+                                showNotification(response);
+                                dt.row.add(response.row_added[0]).draw();
+                                clearFields();
+                            }).always(function(){
+                                showSpinningProgress($('#btn_save'));
+                            });
+                        }else{
+                            updateCustomer().done(function(response){
+                                showNotification(response);
+                                dt.row(_selectRowObj).data(response.row_updated[0]).draw();
+                                clearFields();
+                                showList(true);
+                            }).always(function(){
+                                showSpinningProgress($('#btn_save'));
+                            });
+                        }
+
                     }
 
                 });
@@ -465,6 +497,20 @@
             });
         };
 
+        var updateCustomer=function(){
+            var _data=$('#frm_customer').serializeArray();
+            _data.push({name : "photo_path" ,value : $('img[name="img_customer"]').attr('src')});
+            _data.push({name : "customer_id" ,value : _selectedID});
+
+            return $.ajax({
+                "dataType":"json",
+                "type":"POST",
+                "url":"customers/transaction/update",
+                "data":_data,
+                "beforeSend": showSpinningProgress($('#btn_save'))
+            });
+        };
+
 
 
         var showList=function(b){
@@ -500,12 +546,37 @@
         function format ( d ) {
             // `d` is the original data object for the row
             //alert(d.photo_path);
-
+            return '<br /><table style="margin-left:10%;width: 80%;">' +
+                    '<thead>' +
+                    '</thead>' +
+                    '<tbody>' +
+                    '<tr>' +
+                    '<td width="20%">Name : </td><td width="50%"><b>'+ d.customer_name+'</b></td>' +
+                    '<td rowspan="5" valign="top"><div class="avatar">'+
+                    '<img src="'+ d.photo_path+'" class="img-circle" style="margin-top:0px;height: 100px;width: 100px;">'+
+                    '</div></td>' +
+                    '</tr>' +
+                    '<tr>' +
+                    '<td>Address : </td><td><b>'+ d.address+'</b></td>' +
+                    '</tr>' +
+                    '<tr>' +
+                    '<td>Email : </td><td>'+ d.email_address+'</td>' +
+                    '</tr>' +
+                    '<tr>' +
+                    '<td>Mobile Nos. : </td><td>'+ d.mobile_no+'</td>' +
+                    '</tr>' +
+                    '<tr>' +
+                    '<td>Landline. : </td><td>'+ d.landline+'</td>' +
+                    '</tr>' +
+                    '<tr>' +
+                    '<td>Active : </td><td><i class="fa fa-check"></i></td>' +
+                    '</tr>' +
+                    '</tbody></table><br />';
 
 
             return '<div class="contact-box  animated fadeInRight">' +
                         '<a href="#"> ' +
-                            '<div class="col-sm-8 col-sm-offset-1"> ' +
+                            '<div class="col-sm-7 col-sm-offset-1"> ' +
                                 '<h3><strong>'+ d.customer_name+'</strong></h3> ' +
                                 '<p><i class="fa fa-map-marker"></i> '+ d.address+'</p><br> ' +
                                 '<address> ' +
@@ -515,6 +586,10 @@
                                 '</address>' +
                             '</div> <div class="text-right"> ' +
                             '</div> ' +
+                            '<div class="col-sm-4"><br /> ' +
+                                '<div class="text-center avatar">'+
+                                    '<img src="assets/demo/avatar/avatar_15.png" class="img-responsive img-circle"  style="height:150%;">'+
+                                '</div>'+
                         '</a> ' +
                     '</div>';
 

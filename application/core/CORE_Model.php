@@ -56,6 +56,11 @@ class CORE_model extends CI_Model
         return $this->db->insert_id();
     }
 
+    function delete_via_fk($id){
+        $this->db->where($this->fk_id,$id);
+        return   $this->db->delete($this->table);
+    }
+
 
 
     function get_list($where_array=null){
