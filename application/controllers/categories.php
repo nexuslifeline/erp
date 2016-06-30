@@ -4,15 +4,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class categories extends CORE_Controller
 {
 
-    function __construct()
-    {
+    function __construct() {
         parent::__construct('');
         $this->validate_session();
         $this->load->model('categories_model');
     }
 
-    public function index()
-    {
+    public function index() {
         $data['_def_css_files'] = $this->load->view('template\assets\css_files', '', true);
         $data['_def_js_files'] = $this->load->view('template\assets\js_files', '', true);
         $data['_switcher_settings'] = $this->load->view('template\elements\switcher', '', true);
@@ -23,8 +21,7 @@ class categories extends CORE_Controller
         $this->load->view('categories_view', $data);
     }
 
-    function transaction($txn = null)
-    {
+    function transaction($txn = null) {
         switch ($txn) {
             case 'list':
                 $m_categories = $this->categories_model;
@@ -83,7 +80,6 @@ class categories extends CORE_Controller
                 echo json_encode($response);
 
                 break;
-
         }
     }
 }

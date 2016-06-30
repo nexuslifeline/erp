@@ -1,21 +1,21 @@
 <?php
 
-class categories_model extends CORE_Model {
-    protected  $table="categories";
-    protected  $pk_id="category_id";
+class units_model extends CORE_Model {
+    protected  $table="units";
+    protected  $pk_id="unit_id";
 
     function __construct() {
         parent::__construct();
     }
 
-    function get_category_list($category_id=null){
+    function get_unit_list($unit_id=null){
         $sql="  SELECT
                   a.*
                 FROM
-                  categories as a
+                  units as a
                 WHERE
                     a.is_deleted=FALSE AND a.is_active=TRUE
-                ".($category_id==null?"":" AND a.category_id=$category_id")."
+                ".($unit_id==null?"":" AND a.unit_id=$unit_id")."
             ";
         return $this->db->query($sql)->result();
     }

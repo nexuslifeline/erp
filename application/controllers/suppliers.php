@@ -3,16 +3,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class suppliers extends CORE_Controller {
 
-    function __construct()
-    {
+    function __construct() {
         parent::__construct('');
         $this->validate_session();
         $this->load->model('suppliers_model');
         $this->load->model('supplier_photos_model');
     }
 
-    public function index()
-    {
+    public function index() {
         $data['_def_css_files']=$this->load->view('template\assets\css_files','',true);
         $data['_def_js_files']=$this->load->view('template\assets\js_files','',true);
         $data['_switcher_settings']=$this->load->view('template\elements\switcher','',true);
@@ -24,16 +22,15 @@ class suppliers extends CORE_Controller {
     }
 
 
-    function transaction($txn=null){
-        switch($txn){
-            //****************************************************************************************************************
+    function transaction($txn=null) {
+        switch($txn) {
             case 'list':
                 $m_suppliers=$this->suppliers_model;
                 $response['data']=$m_suppliers->get_supplier_list();
                 echo json_encode($response);
+
                 break;
 
-            //****************************************************************************************************************
             case 'create':
                 $m_suppliers=$this->suppliers_model;
                 $m_photos=$this->supplier_photos_model;
@@ -45,7 +42,7 @@ class suppliers extends CORE_Controller {
                 $m_suppliers->mobile_no=$this->input->post('mobile_no',TRUE);
                 $m_suppliers->save();
 
-                $supplier_id=$m_suppliers->last_insert_id();//get last insert id
+                $supplier_id=$m_suppliers->last_insert_id();
 
                 $m_photos->supplier_id=$supplier_id;
                 $m_photos->photo_path=$this->input->post('photo_path',TRUE);
@@ -58,7 +55,7 @@ class suppliers extends CORE_Controller {
                 echo json_encode($response);
 
                 break;
-            //****************************************************************************************************************
+
             case 'delete':
                 $m_suppliers=$this->suppliers_model;
                 $m_photos=$this->supplier_photos_model;
@@ -69,14 +66,12 @@ class suppliers extends CORE_Controller {
                     $response['title']='Success!';
                     $response['stat']='success';
                     $response['msg']='supplier information successfully deleted.';
-                    //$response['row_updated']=$m_suppliers->get_supplier_list($supplier_id);
+
                     echo json_encode($response);
                 }
 
-
-
                 break;
-            //****************************************************************************************************************
+
             case 'update':
                 $m_suppliers=$this->suppliers_model;
                 $m_photos=$this->supplier_photos_model;
@@ -102,14 +97,12 @@ class suppliers extends CORE_Controller {
 
                 break;
 
-            //****************************************************************************************************************
             case 'upload':
                 $allowed = array('png', 'jpg', 'jpeg','bmp');
 
                 $data=array();
                 $files=array();
                 $directory='assets/img/supplier/';
-
 
                 foreach($_FILES as $file){
 
@@ -132,19 +125,8 @@ class suppliers extends CORE_Controller {
                         $response['path']=$file_path;
                         echo json_encode($response);
                     }
-
                 }
-
-
                 break;
         }
     }
-
-
-    function uploadimage(){
-
-    }
-
-
-
 }

@@ -1,19 +1,15 @@
 <?php
 
-class suppliers_model extends CORE_Model{
+class suppliers_model extends CORE_Model {
+    protected  $table="suppliers";
+    protected  $pk_id="supplier_id";
 
-    protected  $table="suppliers"; //table name
-    protected  $pk_id="supplier_id"; //primary key id
-
-
-
-    function __construct()
-    {
+    function __construct() {
         // Call the Model constructor
         parent::__construct();
     }
 
-    function get_supplier_list($supplier_id=null){
+    function get_supplier_list($supplier_id=null) {
         $sql="  SELECT
                   a.*,b.photo_path
                 FROM
@@ -28,13 +24,5 @@ class suppliers_model extends CORE_Model{
             ";
         return $this->db->query($sql)->result();
     }
-
-
-
-
 }
-
-
-
-
 ?>
