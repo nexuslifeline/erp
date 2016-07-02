@@ -45,8 +45,8 @@
                                 <li><a href="suppliers">Supplier Management</a></li>
                                 <li><a href="customers">Customer Management</a></li>
                                 <li><a href="categories">Category Management</a></li>
-                                <li><a href="#">Department Management</a></li>
-                                <li><a href="#">Unit Management</a></li>
+                                <li><a href="departments">Department Management</a></li>
+                                <li><a href="units">Unit Management</a></li>
                             </ul>
                         </li>
 
