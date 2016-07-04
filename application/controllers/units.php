@@ -14,7 +14,7 @@ class units extends CORE_Controller {
         $data['_switcher_settings'] = $this->load->view('template\elements\switcher', '', true);
         $data['_side_bar_navigation'] = $this->load->view('template\elements\side_bar_navigation', '', true);
         $data['_top_navigation'] = $this->load->view('template\elements\top_navigation', '', true);
-        $data['title'] = 'unit Management';
+        $data['title'] = 'Unit Management';
 
         $this->load->view('units_view', $data);
     }
@@ -38,7 +38,7 @@ class units extends CORE_Controller {
                 $unit_id = $m_units->last_insert_id();
 
                 $response['title'] = 'Success!';
-                $response['stat'] = 'Success';
+                $response['stat'] = 'success';
                 $response['msg'] = 'unit information successfully created.';
                 $response['row_added'] = $m_units->get_unit_list($unit_id);
                 echo json_encode($response);

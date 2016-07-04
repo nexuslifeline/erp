@@ -132,7 +132,7 @@
                                                     <div class="form-group">
                                                         <label class="col-md-2 control-label">* Address :</label>
                                                         <div class="col-md-9">
-                                                            <textarea name="address" class="form-control" data-error-msg="Supplier address is required!" required></textarea>
+                                                            <textarea name="address" class="form-control" data-error-msg="Supplier address is required!" required placeholder="Address"></textarea>
                                                         </div>
                                                     </div>
 
@@ -422,6 +422,7 @@
                             showNotification(response);
                             dt.row.add(response.row_added[0]).draw();
                             clearFields();
+                            showList(true);
                         }).always(function(){
                             showSpinningProgress($('#btn_save'));
                         });

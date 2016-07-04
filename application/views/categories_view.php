@@ -141,7 +141,7 @@
                                                             <div class="form-group">
                                                                 <label class="col-md-2 control-label">* Category Description :</label>
                                                                 <div class="col-md-9">
-                                                                    <textarea name="category_desc" class="form-control" data-error-msg="Category Description is required!" required></textarea>
+                                                                    <textarea name="category_desc" class="form-control" data-error-msg="Category Description is required!" placeholder="Description" required></textarea>
                                                                 </div>
                                                             </div><br /><br />
                                                         </form>
@@ -351,6 +351,7 @@
                             showNotification(response);
                             dt.row.add(response.row_added[0]).draw();
                             clearFields();
+                            showList(true);
                         }).always(function(){
                             showSpinningProgress($('#btn_save'));
                         });

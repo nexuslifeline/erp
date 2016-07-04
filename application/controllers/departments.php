@@ -14,7 +14,7 @@ class departments extends CORE_Controller {
         $data['_switcher_settings'] = $this->load->view('template\elements\switcher', '', true);
         $data['_side_bar_navigation'] = $this->load->view('template\elements\side_bar_navigation', '', true);
         $data['_top_navigation'] = $this->load->view('template\elements\top_navigation', '', true);
-        $data['title'] = 'department Management';
+        $data['title'] = 'Department Management';
 
         $this->load->view('departments_view', $data);
     }
@@ -38,7 +38,7 @@ class departments extends CORE_Controller {
                 $department_id = $m_departments->last_insert_id();
 
                 $response['title'] = 'Success!';
-                $response['stat'] = 'Success';
+                $response['stat'] = 'success';
                 $response['msg'] = 'Department Information successfully created.';
                 $response['row_added'] = $m_departments->get_department_list($department_id);
                 echo json_encode($response);
@@ -53,7 +53,7 @@ class departments extends CORE_Controller {
                 $m_departments->is_deleted=1;
                 if($m_departments->modify($department_id)){
                     $response['title']='Success!';
-                    $response['stat']='Success';
+                    $response['stat']='success';
                     $response['msg']='Department Information successfully deleted.';
 
                     echo json_encode($response);
@@ -72,7 +72,7 @@ class departments extends CORE_Controller {
                 $m_departments->modify($department_id);
 
                 $response['title']='Success!';
-                $response['stat']='Success';
+                $response['stat']='success';
                 $response['msg']='Department Information successfully updated.';
                 $response['row_updated']=$m_departments->get_department_list($department_id);
                 echo json_encode($response);
