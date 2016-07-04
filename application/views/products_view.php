@@ -75,7 +75,7 @@
 
                     <ol class="breadcrumb">
                         <li><a href="dashboard">Dashboard</a></li>
-                        <li><a href="departments">Departments</a></li>
+                        <li><a href="products">Products</a></li>
                     </ol>
 
                     <div class="container-fluid">
@@ -83,16 +83,20 @@
                             <div class="row">
                                 <div class="col-md-12">
 
-                                    <div id="div_department_list">
+                                    <div id="div_product_list">
                                         <div class="panel panel-default">
                                             <div class="panel-body table-responsive">
-                                                <table id="tbl_departments" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                                                <table id="tbl_products" class="table table-striped table-bordered" cellspacing="0" width="100%">
                                                     <thead>
                                                     <tr>
                                                         <th></th>
-                                                        <th>Department Code</th>
-                                                        <th>Department Name</th>
-                                                        <th>Department Description</th>
+                                                        <th>Product Code</th>
+                                                        <th>Description 1</th>
+                                                        <th>Description 2</th>
+                                                        <th>Category</th>
+                                                        <th>Department</th>
+                                                        <th>Unit</th>
+                                                        <th>Equivalent Points</th>
                                                         <th><center>Action</center></th>
                                                     </tr>
                                                     </thead>
@@ -105,45 +109,156 @@
                                         </div>
                                     </div>
 
-                                    <div id="div_department_fields" style="display: none;">
+                                    <div id="div_product_fields" style="display: none;">
                                         <div class="panel panel-default">
                                             <div class="panel-heading">
-                                                <h2>Department Information</h2>
+                                                <h2>product Information</h2>
                                                 <div class="panel-ctrls" data-actions-container="" data-action-collapse='{"target": ".panel-body"}'></div>
                                             </div>
 
                                             <div class="panel-body">
-                                                <form id="frm_department" role="form" class="form-horizontal row-border">
+                                                <h3>General</h3>
+                                                <hr/>
+                                                &nbsp;
+                                                <form id="frm_product" role="form" class="form-horizontal row-border">
                                                     <div class="form-group">
-                                                        <label class="col-md-2 control-label">Department Code :</label>
+                                                        <label class="col-md-2 control-label">Product Code :</label>
                                                         <div class="col-md-9">
                                                             <div class="input-group">
                                                                                     <span class="input-group-addon">
                                                                                         <i class="fa fa-file-code-o"></i>
                                                                                     </span>
-                                                                <input type="text" name="department_code" class="form-control" readonly>
+                                                                <input type="text" name="product_code" class="form-control" readonly>
                                                             </div>
                                                         </div>
                                                     </div>
 
                                                     <div class="form-group">
-                                                        <label class="col-md-2 control-label">* Department Name :</label>
+                                                        <label class="col-md-2 control-label">* Description 1 :</label>
                                                         <div class="col-md-9">
-                                                            <div class="input-group">
-                                                                                    <span class="input-group-addon">
-                                                                                        <i class="fa fa-users"></i>
-                                                                                    </span>
-                                                                <input type="text" name="department_name" class="form-control" placeholder="department Name" data-error-msg="Department Name is required!" required>
-                                                            </div>
+                                                            <textarea name="product_desc" class="form-control" data-error-msg="product Description is required!" placeholder="Description" required></textarea>
                                                         </div>
                                                     </div>
 
                                                     <div class="form-group">
-                                                        <label class="col-md-2 control-label">* Department Description :</label>
+                                                        <label class="col-md-2 control-label">Description 2 :</label>
                                                         <div class="col-md-9">
-                                                            <textarea name="department_desc" class="form-control" data-error-msg="Department Description is required!" placeholder="Description" required></textarea>
+                                                            <textarea name="product_desc1" class="form-control" placeholder="Description"></textarea>
                                                         </div>
-                                                    </div><br /><br />
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label class="col-md-2 control-label">* Category :</label>
+                                                        <div class="col-md-9">
+                                                            <select name="product_cat" id="" class="form-control"></select>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label class="col-md-2 control-label">* Department :</label>
+                                                        <div class="col-md-9">
+                                                            <select name="product_dept" id="" class="form-control"></select>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label class="col-md-2 control-label">* Unit :</label>
+                                                        <div class="col-md-9">
+                                                            <select name="product_unit" id="" class="form-control"></select>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <div class="col-md-9 col-md-offset-2">
+                                                            <input type="checkbox" name="product_vat"> <b>Vat Exempt</b>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label class="col-md-2 control-label">Equivalent Points :</label>
+                                                        <div class="col-md-9">
+                                                            <input type="text" name="equivalent_points" class="form-control">
+                                                        </div>
+                                                    </div>
+
+                                                    <h3>Inventory</h3>
+                                                    <hr/>
+                                                    &nbsp;
+
+                                                    <div class="form-group">
+                                                        <label class="col-md-2 control-label">Warn Qty :</label>
+                                                        <div class="col-md-9">
+                                                            <input type="text" name="product_warn" class="form-control">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label class="col-md-2 control-label">Ideal Qty :</label>
+                                                        <div class="col-md-9">
+                                                            <input type="text" name="product_ideal" class="form-control">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <div class="col-md-9 col-md-offset-2">
+                                                            <input type="radio" name="product_radio"> <b>Inventory</b>
+                                                            <input type="radio" name="product_radio"> <b>Non-Inventory</b>
+                                                        </div>
+                                                    </div>
+
+                                                    <h3>Pricing</h3>
+                                                    <hr/>
+                                                    &nbsp;
+
+                                                    <div class="form-group">
+                                                        <label class="col-md-2 control-label">Purchase Cost :</label>
+                                                        <div class="col-md-9">
+                                                            <input type="text" name="purchase_cost" class="form-control">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label class="col-md-2 control-label">Markup Percent :</label>
+                                                        <div class="col-md-9">
+                                                            <input type="text" name="markup_percent" class="form-control">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label class="col-md-2 control-label">Sale Price :</label>
+                                                        <div class="col-md-9">
+                                                            <input type="text" name="sale_price" class="form-control">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label class="col-md-2 control-label">Whole Sale Price :</label>
+                                                        <div class="col-md-9">
+                                                            <input type="text" name="whole_sale" class="form-control">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label class="col-md-2 control-label">Retailer Price :</label>
+                                                        <div class="col-md-9">
+                                                            <input type="text" name="retailer_price" class="form-control">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label class="col-md-2 control-label">Special Discount Price :</label>
+                                                        <div class="col-md-9">
+                                                            <input type="text" name="special_disc" class="form-control">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label class="col-md-2 control-label">Valued Customer Price :</label>
+                                                        <div class="col-md-9">
+                                                            <input type="text" name="valued_customer" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                    <br /><br />
                                                 </form>
                                             </div>
 
@@ -216,10 +331,10 @@ $(document).ready(function(){
     var dt; var _txnMode; var _selectedID; var _selectRowObj;
 
     var initializeControls=function(){
-        dt=$('#tbl_departments').DataTable({
+        dt=$('#tbl_products').DataTable({
             "dom": '<"toolbar">frtip',
             "bLengthChange":false,
-            "ajax" : "departments/transaction/list",
+            "ajax" : "products/transaction/list",
             "columns": [
                 {
                     "targets": [0],
@@ -228,11 +343,15 @@ $(document).ready(function(){
                     "data":           null,
                     "defaultContent": ""
                 },
-                { targets:[1],data: "department_code" },
-                { targets:[2],data: "department_name" },
-                { targets:[3],data: "department_desc" },
+                { targets:[1],data: "product_code" },
+                { targets:[2],data: "product_desc" },
+                { targets:[3],data: "product_desc1" },
+                { targets:[4],data: "product_cat" },
+                { targets:[5],data: "product_dept" },
+                { targets:[6],data: "product_unit" },
+                { targets:[7],data: "equivalent_points" },
                 {
-                    targets:[4],
+                    targets:[8],
                     render: function (data, type, full, meta){
                         var btn_edit='<button class="btn btn-default btn-sm" name="edit_info"  style="margin-left:-15px;" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil"></i> </button>';
                         var btn_trash='<button class="btn btn-default btn-sm" name="remove_info" style="margin-right:0px;" data-toggle="tooltip" data-placement="top" title="Move to trash"><i class="fa fa-trash-o"></i> </button>';
@@ -244,8 +363,8 @@ $(document).ready(function(){
         });
 
         var createToolBarButton=function(){
-            var _btnNew='<button class="btn btn-primary"  id="btn_new" style="text-transform: capitalize;font-family: Tahoma, Georgia, Serif;" data-toggle="modal" data-target="" data-placement="left" title="New department" >'+
-                '<i class="fa fa-users"></i> New Department</button>';
+            var _btnNew='<button class="btn btn-primary"  id="btn_new" style="text-transform: capitalize;font-family: Tahoma, Georgia, Serif;" data-toggle="modal" data-target="" data-placement="left" title="New product" >'+
+                '<i class="fa fa-users"></i> New product</button>';
             $("div.toolbar").html(_btnNew);
         }();
     }();
@@ -253,7 +372,7 @@ $(document).ready(function(){
     var bindEventHandlers=(function(){
         var detailRows = [];
 
-        $('#tbl_departments tbody').on( 'click', 'tr td.details-control', function () {
+        $('#tbl_products tbody').on( 'click', 'tr td.details-control', function () {
             var tr = $(this).closest('tr');
             var row = dt.row( tr );
             var idx = $.inArray( tr.attr('id'), detailRows );
@@ -280,11 +399,11 @@ $(document).ready(function(){
             showList(false);
         });
 
-        $('#tbl_departments tbody').on('click','button[name="edit_info"]',function(){
+        $('#tbl_products tbody').on('click','button[name="edit_info"]',function(){
             _txnMode="edit";
             _selectRowObj=$(this).closest('tr');
             var data=dt.row(_selectRowObj).data();
-            _selectedID=data.department_id;
+            _selectedID=data.product_id;
 
             $('input,textarea').each(function(){
                 var _elem=$(this);
@@ -297,16 +416,16 @@ $(document).ready(function(){
             showList(false);
         });
 
-        $('#tbl_departments tbody').on('click','button[name="remove_info"]',function(){
+        $('#tbl_products tbody').on('click','button[name="remove_info"]',function(){
             _selectRowObj=$(this).closest('tr');
             var data=dt.row(_selectRowObj).data();
-            _selectedID=data.department_id;
+            _selectedID=data.product_id;
 
             $('#modal_confirmation').modal('show');
         });
 
         $('#btn_yes').click(function(){
-            removeDepartment().done(function(response){
+            removeProduct().done(function(response){
                 showNotification(response);
                 dt.row(_selectRowObj).remove().draw();
             });
@@ -315,7 +434,7 @@ $(document).ready(function(){
         $('input[name="file_upload[]"]').change(function(event){
             var _files=event.target.files;
 
-            $('#div_img_department').hide();
+            $('#div_img_product').hide();
             $('#div_img_loader').show();
 
             var data=new FormData();
@@ -326,7 +445,7 @@ $(document).ready(function(){
             console.log(_files);
 
             $.ajax({
-                url : 'departments/transaction/upload',
+                url : 'products/transaction/upload',
                 type : "POST",
                 data : data,
                 cache : false,
@@ -335,7 +454,7 @@ $(document).ready(function(){
                 contentType : false,
                 success : function(response){
                     $('#div_img_loader').hide();
-                    $('#div_img_department').show();
+                    $('#div_img_product').show();
                 }
             });
         });
@@ -347,7 +466,7 @@ $(document).ready(function(){
         $('#btn_save').click(function(){
             if(validateRequiredFields()){
                 if(_txnMode=="new"){
-                    createDepartment().done(function(response){
+                    createProduct().done(function(response){
                         showNotification(response);
                         dt.row.add(response.row_added[0]).draw();
                         clearFields();
@@ -356,7 +475,7 @@ $(document).ready(function(){
                         showSpinningProgress($('#btn_save'));
                     });
                 }else{
-                    updateDepartment().done(function(response){
+                    updateProduct().done(function(response){
                         showNotification(response);
                         dt.row(_selectRowObj).data(response.row_updated[0]).draw();
                         clearFields();
@@ -373,7 +492,7 @@ $(document).ready(function(){
         var stat=true;
 
         $('div.form-group').removeClass('has-error');
-        $('input[required],textarea','#frm_department').each(function(){
+        $('input[required],textarea','#frm_product').each(function(){
             if($(this).val()==""){
                 showNotification({title:"Error!",stat:"error",msg:$(this).data('error-msg')});
                 $(this).closest('div.form-group').addClass('has-error');
@@ -384,47 +503,47 @@ $(document).ready(function(){
         return stat;
     };
 
-    var createDepartment=function(){
-        var _data=$('#frm_department').serializeArray();
+    var createProduct=function(){
+        var _data=$('#frm_product').serializeArray();
 
         return $.ajax({
             "dataType":"json",
             "type":"POST",
-            "url":"departments/transaction/create",
+            "url":"products/transaction/create",
             "data":_data,
             "beforeSend": showSpinningProgress($('#btn_save'))
         });
     };
 
-    var updateDepartment=function(){
-        var _data=$('#frm_department').serializeArray();
-        _data.push({name : "department_id" ,value : _selectedID});
+    var updateProduct=function(){
+        var _data=$('#frm_product').serializeArray();
+        _data.push({name : "product_id" ,value : _selectedID});
 
         return $.ajax({
             "dataType":"json",
             "type":"POST",
-            "url":"departments/transaction/update",
+            "url":"products/transaction/update",
             "data":_data,
             "beforeSend": showSpinningProgress($('#btn_save'))
         });
     };
 
-    var removeDepartment=function(){
+    var removeProduct=function(){
         return $.ajax({
             "dataType":"json",
             "type":"POST",
-            "url":"departments/transaction/delete",
-            "data":{department_id : _selectedID}
+            "url":"products/transaction/delete",
+            "data":{product_id : _selectedID}
         });
     };
 
     var showList=function(b){
         if(b){
-            $('#div_department_list').show();
-            $('#div_department_fields').hide();
+            $('#div_product_list').show();
+            $('#div_product_fields').hide();
         }else{
-            $('#div_department_list').hide();
-            $('#div_department_fields').show();
+            $('#div_product_list').hide();
+            $('#div_product_fields').show();
         }
     };
 
@@ -442,7 +561,7 @@ $(document).ready(function(){
     };
 
     var clearFields=function(){
-        $('input[required],textarea','#frm_department').val('');
+        $('input[required],textarea','#frm_product').val('');
         $('form').find('input:first').focus();
     };
 
@@ -452,13 +571,55 @@ $(document).ready(function(){
         '</thead>' +
         '<tbody>' +
         '<tr>' +
-        '<td width="20%">Department Code : </td><td width="50%"><b>'+ d.department_code+'</b></td>' +
+        '<td width="20%">Product Code : </td><td width="50%"><b>'+ d.product_code+'</b></td>' +
         '</tr>' +
         '<tr>' +
-        '<td>Department Name : </td><td><b>'+ d.department_name+'</b></td>' +
+        '<td>Product Description 1 : </td><td>'+ d.product_desc+'</td>' +
         '</tr>' +
         '<tr>' +
-        '<td>Department Description : </td><td>'+ d.department_desc+'</td>' +
+        '<td>Product Description 2 : </td><td>'+ d.product_desc1+'</td>' +
+        '</tr>' +
+        '<tr>' +
+        '<td>Category : </td><td>'+ d.product_cat+'</td>' +
+        '</tr>' +
+        '<tr>' +
+        '<td>Department : </td><td>'+ d.product_dept+'</td>' +
+        '</tr>' +
+        '<tr>' +
+        '<td>Unit : </td><td>'+ d.product_unit+'</td>' +
+        '</tr>' +
+        '<tr>' +
+        '<td>Vat Exempt : </td><td>'+ d.product_vat+'</td>' +
+        '</tr>' +
+        '<tr>' +
+        '<td>Equivalent Points : </td><td>'+ d.equivalent_points+'</td>' +
+        '</tr>' +
+        '<tr>' +
+        '<td>Warn Qty : </td><td>'+ d.product_warn+'</td>' +
+        '</tr>' +
+        '<tr>' +
+        '<td>Ideal : </td><td>'+ d.product_ideal+'</td>' +
+        '</tr>' +
+        '<tr>' +
+        '<td>Purchase Cost : </td><td>'+ d.purchase_cost+'</td>' +
+        '</tr>' +
+        '<tr>' +
+        '<td>Markup Percent : </td><td>'+ d.markup_percent+'</td>' +
+        '</tr>' +
+        '<tr>' +
+        '<td>Sale Price : </td><td>'+ d.sale_price+'</td>' +
+        '</tr>' +
+        '<tr>' +
+        '<td>Whole Sale Price : </td><td>'+ d.whole_sale+'</td>' +
+        '</tr>' +
+        '<tr>' +
+        '<td>Retailer Price : </td><td>'+ d.retailer_price+'</td>' +
+        '</tr>' +
+        '<tr>' +
+        '<td>Special Discount Price : </td><td>'+ d.special_disc+'</td>' +
+        '</tr>' +
+        '<tr>' +
+        '<td>Valued Customer Price : </td><td>'+ d.valued_customer+'</td>' +
         '</tr>' +
         '</tbody></table><br />';
     };

@@ -481,7 +481,7 @@
                                 showNotification(response);
                                 dt.row.add(response.row_added[0]).draw();
                                 clearFields();
-                                showList(true);
+
                             }).always(function(){
                                 showSpinningProgress($('#btn_save'));
                             });
