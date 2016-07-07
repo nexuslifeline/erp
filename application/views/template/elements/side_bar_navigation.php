@@ -50,10 +50,10 @@
                             </ul>
                         </li>
 
-                        <li><a href="#"><i class="ti ti-pencil"></i><span>Settings</span></a>
+                        <li><a href="#"><i class="ti ti-settings"></i><span>Settings</span></a>
                             <ul class="acc-menu">
                                 <li><a href="#">Setup User Group</a></li>
-                                <li><a href="#">Create User Group</a></li>
+                                <li><a href="users">Create User Account</a></li>
                             </ul>
                         </li>
 

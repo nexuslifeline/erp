@@ -14,7 +14,7 @@ class Users_model extends CORE_Model{
 
     function create_default_user(){
 
-        return;
+        //return;
         $sql="INSERT IGNORE INTO user_accounts
                   (user_id,user_name,user_pword,user_lname,user_fname,user_mname,user_address,user_email,user_mobile,user_group_id)
               VALUES
@@ -33,6 +33,24 @@ class Users_model extends CORE_Model{
         return $this->db->get();
 
     }
+
+    function get_user_list($id=null){
+
+        $this->db->select('ua.*,ug.user_group,CONCAT_WS(" ",ua.user_fname,ua.user_mname,ua.user_lname)as full_name');
+        $this->db->from('user_accounts as ua');
+        $this->db->join('user_groups as ug', 'ua.user_group_id = ug.user_group_id','left');
+        $this->db->where('ua.is_active=', 1);
+        $this->db->where('ua.is_deleted=', 0);
+
+        if($id!=null){ $this->db->where('ua.user_id=', $id); }
+
+        return $this->db->get()->result();
+    }
+
+
+
+
+
 
 }
 
