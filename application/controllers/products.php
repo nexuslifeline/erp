@@ -11,6 +11,10 @@ class products extends CORE_Controller
     }
 
     public function index() {
+        $data['product_code'] = $this->products_model->getCode();
+        $data['product_cat'] = $this->products_model->getCategory();
+        $data['product_dept'] = $this->products_model->getDepartment();
+        $data['product_unit'] = $this->products_model->getUnit();
         $data['_def_css_files'] = $this->load->view('template\assets\css_files', '', true);
         $data['_def_js_files'] = $this->load->view('template\assets\js_files', '', true);
         $data['_switcher_settings'] = $this->load->view('template\elements\switcher', '', true);

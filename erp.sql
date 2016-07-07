@@ -14,7 +14,31 @@ CREATE DATABASE `erp`
 USE `erp`;
 
 #
-# Structure for the `categories` table : 
+# Structure for the `brands` table :
+#
+
+CREATE TABLE `brands` (
+  `brand_id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `brand_name` varchar(255) DEFAULT NULL,
+  `is_deleted` bit(1) DEFAULT b'0',
+  `is_active` bit(1) DEFAULT b'1',
+  PRIMARY KEY (`brand_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+#
+# Structure for the `cards` table :
+#
+
+CREATE TABLE `cards` (
+  `card_id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `card_name` varchar(255) DEFAULT NULL,
+  `is_deleted` bit(1) DEFAULT b'0',
+  `is_active` bit(1) DEFAULT b'1',
+  PRIMARY KEY (`card_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+#
+# Structure for the `categories` table :
 #
 
 CREATE TABLE `categories` (
@@ -30,7 +54,7 @@ CREATE TABLE `categories` (
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 #
-# Structure for the `customer_photos` table : 
+# Structure for the `customer_photos` table :
 #
 
 CREATE TABLE `customer_photos` (
@@ -38,10 +62,10 @@ CREATE TABLE `customer_photos` (
   `customer_id` int(11) DEFAULT '0',
   `photo_path` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`photo_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
 
 #
-# Structure for the `customers` table : 
+# Structure for the `customers` table :
 #
 
 CREATE TABLE `customers` (
@@ -57,10 +81,10 @@ CREATE TABLE `customers` (
   `is_deleted` bit(1) DEFAULT b'0',
   `is_active` bit(1) DEFAULT b'1',
   PRIMARY KEY (`customer_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
 
 #
-# Structure for the `departments` table : 
+# Structure for the `departments` table :
 #
 
 CREATE TABLE `departments` (
@@ -76,7 +100,73 @@ CREATE TABLE `departments` (
 ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 
 #
-# Structure for the `supplier_photos` table : 
+# Structure for the `generics` table :
+#
+
+CREATE TABLE `generics` (
+  `generic_id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `generic_name` varchar(255) DEFAULT NULL,
+  `is_deleted` bit(1) DEFAULT b'0',
+  `is_active` bit(1) DEFAULT b'1',
+  PRIMARY KEY (`generic_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+#
+# Structure for the `giftcards` table :
+#
+
+CREATE TABLE `giftcards` (
+  `giftcard_id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `giftcard_name` varchar(255) DEFAULT NULL,
+  `is_deleted` bit(1) DEFAULT b'0',
+  `is_active` bit(1) DEFAULT b'1',
+  PRIMARY KEY (`giftcard_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+#
+# Structure for the `locations` table :
+#
+
+CREATE TABLE `locations` (
+  `location_id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `location_name` varchar(255) DEFAULT NULL,
+  `is_deleted` bit(1) DEFAULT b'0',
+  `is_active` bit(1) DEFAULT b'1',
+  PRIMARY KEY (`location_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+#
+# Structure for the `products` table :
+#
+
+CREATE TABLE `products` (
+  `product_id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `product_code` bigint(255) DEFAULT NULL,
+  `product_desc` varchar(255) DEFAULT NULL,
+  `product_desc1` varchar(255) DEFAULT NULL,
+  `product_cat` varchar(255) DEFAULT NULL,
+  `product_dept` varchar(255) DEFAULT NULL,
+  `product_unit` varchar(255) DEFAULT NULL,
+  `product_vat` tinyint(1) DEFAULT NULL,
+  `equivalent_points` bigint(255) DEFAULT NULL,
+  `product_warn` bigint(255) DEFAULT NULL,
+  `product_ideal` bigint(255) DEFAULT NULL,
+  `purchase_cost` bigint(255) DEFAULT NULL,
+  `markup_percent` bigint(255) DEFAULT NULL,
+  `sale_price` bigint(255) DEFAULT NULL,
+  `whole_sale` bigint(255) DEFAULT NULL,
+  `retailer_price` bigint(255) DEFAULT NULL,
+  `special_disc` bigint(255) DEFAULT NULL,
+  `valued_customer` bigint(255) DEFAULT NULL,
+  `date_created` datetime DEFAULT NULL,
+  `date_modified` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `is_deleted` bit(1) DEFAULT b'0',
+  `is_active` bit(1) DEFAULT b'1',
+  PRIMARY KEY (`product_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+
+#
+# Structure for the `supplier_photos` table :
 #
 
 CREATE TABLE `supplier_photos` (
@@ -84,10 +174,10 @@ CREATE TABLE `supplier_photos` (
   `supplier_id` int(11) DEFAULT '0',
   `photo_path` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`photo_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
 
 #
-# Structure for the `suppliers` table : 
+# Structure for the `suppliers` table :
 #
 
 CREATE TABLE `suppliers` (
@@ -103,10 +193,10 @@ CREATE TABLE `suppliers` (
   `is_deleted` bit(1) DEFAULT b'0',
   `is_active` bit(1) DEFAULT b'1',
   PRIMARY KEY (`supplier_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=latin1;
 
 #
-# Structure for the `units` table : 
+# Structure for the `units` table :
 #
 
 CREATE TABLE `units` (
@@ -119,10 +209,10 @@ CREATE TABLE `units` (
   `is_deleted` bit(1) DEFAULT b'0',
   `is_active` bit(1) DEFAULT b'1',
   PRIMARY KEY (`unit_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 
 #
-# Structure for the `user_accounts` table : 
+# Structure for the `user_accounts` table :
 #
 
 CREATE TABLE `user_accounts` (
@@ -146,7 +236,7 @@ CREATE TABLE `user_accounts` (
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 #
-# Structure for the `user_groups` table : 
+# Structure for the `user_groups` table :
 #
 
 CREATE TABLE `user_groups` (

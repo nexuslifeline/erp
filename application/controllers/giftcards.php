@@ -1,11 +1,13 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class units extends CORE_Controller {
+class giftcards extends CORE_Controller
+{
+
     function __construct() {
         parent::__construct('');
         $this->validate_session();
-        $this->load->model('units_model');
+        $this->load->model('giftcards_model');
     }
 
     public function index() {
@@ -14,46 +16,45 @@ class units extends CORE_Controller {
         $data['_switcher_settings'] = $this->load->view('template\elements\switcher', '', true);
         $data['_side_bar_navigation'] = $this->load->view('template\elements\side_bar_navigation', '', true);
         $data['_top_navigation'] = $this->load->view('template\elements\top_navigation', '', true);
-        $data['title'] = 'Unit Management';
+        $data['title'] = 'Gift Card Management';
 
-        $this->load->view('units_view', $data);
+        $this->load->view('giftcards_view', $data);
     }
 
     function transaction($txn = null) {
         switch ($txn) {
             case 'list':
-                $m_units = $this->units_model;
-                $response['data'] = $m_units->get_unit_list();
+                $m_giftcards = $this->giftcards_model;
+                $response['data'] = $m_giftcards->get_giftcard_list();
                 echo json_encode($response);
                 break;
 
             case 'create':
-                $m_units = $this->units_model;
+                $m_giftcards = $this->giftcards_model;
 
-                $m_units->unit_name = $this->input->post('unit_name', TRUE);
-                $m_units->unit_desc = $this->input->post('unit_desc', TRUE);
-                $m_units->save();
+                $m_giftcards->giftcard_name = $this->input->post('giftcard_name', TRUE);
+                $m_giftcards->save();
 
-                $unit_id = $m_units->last_insert_id();
+                $giftcard_id = $m_giftcards->last_insert_id();
 
                 $response['title'] = 'Success!';
                 $response['stat'] = 'success';
-                $response['msg'] = 'unit information successfully created.';
-                $response['row_added'] = $m_units->get_unit_list($unit_id);
+                $response['msg'] = 'giftcard information successfully created.';
+                $response['row_added'] = $m_giftcards->get_giftcard_list($giftcard_id);
                 echo json_encode($response);
 
                 break;
 
             case 'delete':
-                $m_units=$this->units_model;
+                $m_giftcards=$this->giftcards_model;
 
-                $unit_id=$this->input->post('unit_id',TRUE);
+                $giftcard_id=$this->input->post('giftcard_id',TRUE);
 
-                $m_units->is_deleted=1;
-                if($m_units->modify($unit_id)){
+                $m_giftcards->is_deleted=1;
+                if($m_giftcards->modify($giftcard_id)){
                     $response['title']='Success!';
                     $response['stat']='success';
-                    $response['msg']='unit information successfully deleted.';
+                    $response['msg']='giftcard information successfully deleted.';
 
                     echo json_encode($response);
                 }
@@ -61,18 +62,17 @@ class units extends CORE_Controller {
                 break;
 
             case 'update':
-                $m_units=$this->units_model;
+                $m_giftcards=$this->giftcards_model;
 
-                $unit_id=$this->input->post('unit_id',TRUE);
-                $m_units->unit_name=$this->input->post('unit_name',TRUE);
-                $m_units->unit_desc=$this->input->post('unit_desc',TRUE);
+                $giftcard_id=$this->input->post('giftcard_id',TRUE);
+                $m_giftcards->giftcard_name=$this->input->post('giftcard_name',TRUE);
 
-                $m_units->modify($unit_id);
+                $m_giftcards->modify($giftcard_id);
 
                 $response['title']='Success!';
                 $response['stat']='success';
-                $response['msg']='unit information successfully updated.';
-                $response['row_updated']=$m_units->get_unit_list($unit_id);
+                $response['msg']='giftcard information successfully updated.';
+                $response['row_updated']=$m_giftcards->get_giftcard_list($giftcard_id);
                 echo json_encode($response);
 
                 break;

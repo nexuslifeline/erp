@@ -75,7 +75,7 @@
 
                     <ol class="breadcrumb">
                         <li><a href="dashboard">Dashboard</a></li>
-                        <li><a href="departments">Departments</a></li>
+                        <li><a href="cards">Cards</a></li>
                     </ol>
 
                     <div class="container-fluid">
@@ -83,14 +83,13 @@
                             <div class="row">
                                 <div class="col-md-12">
 
-                                    <div id="div_department_list">
+                                    <div id="div_card_list">
                                         <div class="panel panel-default">
                                             <div class="panel-body table-responsive">
-                                                <table id="tbl_departments" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                                                <table id="tbl_cards" class="table table-striped table-bordered" cellspacing="0" width="100%">
                                                     <thead>
                                                     <tr>
-                                                        <th>Department Name</th>
-                                                        <th>Department Description</th>
+                                                        <th>Card Name</th>
                                                         <th><center>Action</center></th>
                                                     </tr>
                                                     </thead>
@@ -103,33 +102,27 @@
                                         </div>
                                     </div>
 
-                                    <div id="div_department_fields" style="display: none;">
+                                    <div id="div_card_fields" style="display: none;">
                                         <div class="panel panel-default">
                                             <div class="panel-heading">
-                                                <h2>Department Information</h2>
+                                                <h2>Card Information</h2>
                                                 <div class="panel-ctrls" data-actions-container="" data-action-collapse='{"target": ".panel-body"}'></div>
                                             </div>
 
                                             <div class="panel-body">
-                                                <form id="frm_department" role="form" class="form-horizontal row-border">
+                                                <form id="frm_card" role="form" class="form-horizontal row-border">
                                                     <div class="form-group">
-                                                        <label class="col-md-2 col-md-offset-2 control-label">* Department Name :</label>
+                                                        <label class="col-md-2 col-md-offset-2 control-label">* Card Name :</label>
                                                         <div class="col-md-4">
                                                             <div class="input-group">
                                                                                     <span class="input-group-addon">
                                                                                         <i class="fa fa-users"></i>
                                                                                     </span>
-                                                                <input type="text" name="department_name" class="form-control" placeholder="department Name" data-error-msg="Department Name is required!" required>
+                                                                <input type="text" name="card_name" class="form-control" placeholder="Card Name" data-error-msg="Card name is required!" required>
                                                             </div>
                                                         </div>
                                                     </div>
-
-                                                    <div class="form-group">
-                                                        <label class="col-md-2 col-md-offset-2 control-label">* Department Description :</label>
-                                                        <div class="col-md-4">
-                                                            <textarea name="department_desc" class="form-control" data-error-msg="Department Description is required!" placeholder="Description" required></textarea>
-                                                        </div>
-                                                    </div><br/>
+                                                    <br/>
                                                 </form>
                                             </div>
 
@@ -202,15 +195,15 @@ $(document).ready(function(){
     var dt; var _txnMode; var _selectedID; var _selectRowObj;
 
     var initializeControls=function(){
-        dt=$('#tbl_departments').DataTable({
+        dt=$('#tbl_cards').DataTable({
             "dom": '<"toolbar">frtip',
             "bLengthChange":false,
-            "ajax" : "departments/transaction/list",
+            "ajax" : "cards/transaction/list",
             "columns": [
-                { targets:[0],data: "department_name" },
-                { targets:[1],data: "department_desc" },
+
+                { targets:[0],data: "card_name" },
                 {
-                    targets:[2],
+                    targets:[1],
                     render: function (data, type, full, meta){
                         var btn_edit='<button class="btn btn-default btn-sm" name="edit_info"  style="margin-left:-15px;" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil"></i> </button>';
                         var btn_trash='<button class="btn btn-default btn-sm" name="remove_info" style="margin-right:0px;" data-toggle="tooltip" data-placement="top" title="Move to trash"><i class="fa fa-trash-o"></i> </button>';
@@ -222,8 +215,8 @@ $(document).ready(function(){
         });
 
         var createToolBarButton=function(){
-            var _btnNew='<button class="btn btn-primary"  id="btn_new" style="text-transform: capitalize;font-family: Tahoma, Georgia, Serif;" data-toggle="modal" data-target="" data-placement="left" title="New department" >'+
-                '<i class="fa fa-users"></i> New Department</button>';
+            var _btnNew='<button class="btn btn-primary"  id="btn_new" style="text-transform: capitalize;font-family: Tahoma, Georgia, Serif;" data-toggle="modal" data-target="" data-placement="left" title="New card" >'+
+                '<i class="fa fa-users"></i> New card</button>';
             $("div.toolbar").html(_btnNew);
         }();
     }();
@@ -231,7 +224,7 @@ $(document).ready(function(){
     var bindEventHandlers=(function(){
         var detailRows = [];
 
-        $('#tbl_departments tbody').on( 'click', 'tr td.details-control', function () {
+        $('#tbl_cards tbody').on( 'click', 'tr td.details-control', function () {
             var tr = $(this).closest('tr');
             var row = dt.row( tr );
             var idx = $.inArray( tr.attr('id'), detailRows );
@@ -258,11 +251,11 @@ $(document).ready(function(){
             showList(false);
         });
 
-        $('#tbl_departments tbody').on('click','button[name="edit_info"]',function(){
+        $('#tbl_cards tbody').on('click','button[name="edit_info"]',function(){
             _txnMode="edit";
             _selectRowObj=$(this).closest('tr');
             var data=dt.row(_selectRowObj).data();
-            _selectedID=data.department_id;
+            _selectedID=data.card_id;
 
             $('input,textarea').each(function(){
                 var _elem=$(this);
@@ -275,16 +268,16 @@ $(document).ready(function(){
             showList(false);
         });
 
-        $('#tbl_departments tbody').on('click','button[name="remove_info"]',function(){
+        $('#tbl_cards tbody').on('click','button[name="remove_info"]',function(){
             _selectRowObj=$(this).closest('tr');
             var data=dt.row(_selectRowObj).data();
-            _selectedID=data.department_id;
+            _selectedID=data.card_id;
 
             $('#modal_confirmation').modal('show');
         });
 
         $('#btn_yes').click(function(){
-            removeDepartment().done(function(response){
+            removeCard().done(function(response){
                 showNotification(response);
                 dt.row(_selectRowObj).remove().draw();
             });
@@ -293,7 +286,7 @@ $(document).ready(function(){
         $('input[name="file_upload[]"]').change(function(event){
             var _files=event.target.files;
 
-            $('#div_img_department').hide();
+            $('#div_img_card').hide();
             $('#div_img_loader').show();
 
             var data=new FormData();
@@ -304,7 +297,7 @@ $(document).ready(function(){
             console.log(_files);
 
             $.ajax({
-                url : 'departments/transaction/upload',
+                url : 'cards/transaction/upload',
                 type : "POST",
                 data : data,
                 cache : false,
@@ -313,7 +306,7 @@ $(document).ready(function(){
                 contentType : false,
                 success : function(response){
                     $('#div_img_loader').hide();
-                    $('#div_img_department').show();
+                    $('#div_img_card').show();
                 }
             });
         });
@@ -325,7 +318,7 @@ $(document).ready(function(){
         $('#btn_save').click(function(){
             if(validateRequiredFields()){
                 if(_txnMode=="new"){
-                    createDepartment().done(function(response){
+                    createCard().done(function(response){
                         showNotification(response);
                         dt.row.add(response.row_added[0]).draw();
                         clearFields();
@@ -334,7 +327,7 @@ $(document).ready(function(){
                         showSpinningProgress($('#btn_save'));
                     });
                 }else{
-                    updateDepartment().done(function(response){
+                    updateCard().done(function(response){
                         showNotification(response);
                         dt.row(_selectRowObj).data(response.row_updated[0]).draw();
                         clearFields();
@@ -351,7 +344,7 @@ $(document).ready(function(){
         var stat=true;
 
         $('div.form-group').removeClass('has-error');
-        $('input[required],textarea','#frm_department').each(function(){
+        $('input[required],textarea','#frm_card').each(function(){
             if($(this).val()==""){
                 showNotification({title:"Error!",stat:"error",msg:$(this).data('error-msg')});
                 $(this).closest('div.form-group').addClass('has-error');
@@ -362,47 +355,47 @@ $(document).ready(function(){
         return stat;
     };
 
-    var createDepartment=function(){
-        var _data=$('#frm_department').serializeArray();
+    var createCard=function(){
+        var _data=$('#frm_card').serializeArray();
 
         return $.ajax({
             "dataType":"json",
             "type":"POST",
-            "url":"departments/transaction/create",
+            "url":"cards/transaction/create",
             "data":_data,
             "beforeSend": showSpinningProgress($('#btn_save'))
         });
     };
 
-    var updateDepartment=function(){
-        var _data=$('#frm_department').serializeArray();
-        _data.push({name : "department_id" ,value : _selectedID});
+    var updateCard=function(){
+        var _data=$('#frm_card').serializeArray();
+        _data.push({name : "card_id" ,value : _selectedID});
 
         return $.ajax({
             "dataType":"json",
             "type":"POST",
-            "url":"departments/transaction/update",
+            "url":"cards/transaction/update",
             "data":_data,
             "beforeSend": showSpinningProgress($('#btn_save'))
         });
     };
 
-    var removeDepartment=function(){
+    var removeCard=function(){
         return $.ajax({
             "dataType":"json",
             "type":"POST",
-            "url":"departments/transaction/delete",
-            "data":{department_id : _selectedID}
+            "url":"cards/transaction/delete",
+            "data":{card_id : _selectedID}
         });
     };
 
     var showList=function(b){
         if(b){
-            $('#div_department_list').show();
-            $('#div_department_fields').hide();
+            $('#div_card_list').show();
+            $('#div_card_fields').hide();
         }else{
-            $('#div_department_list').hide();
-            $('#div_department_fields').show();
+            $('#div_card_list').hide();
+            $('#div_card_fields').show();
         }
     };
 
@@ -420,7 +413,7 @@ $(document).ready(function(){
     };
 
     var clearFields=function(){
-        $('input[required],textarea','#frm_department').val('');
+        $('input[required],textarea','#frm_card').val('');
         $('form').find('input:first').focus();
     };
 
@@ -430,10 +423,7 @@ $(document).ready(function(){
         '</thead>' +
         '<tbody>' +
         '<tr>' +
-        '<td>Department Name : </td><td><b>'+ d.department_name+'</b></td>' +
-        '</tr>' +
-        '<tr>' +
-        '<td>Department Description : </td><td>'+ d.department_desc+'</td>' +
+        '<td>Card Name : </td><td><b>'+ d.card_name+'</b></td>' +
         '</tr>' +
         '</tbody></table><br />';
     };

@@ -32,7 +32,6 @@ class categories extends CORE_Controller
             case 'create':
                 $m_categories = $this->categories_model;
 
-                $m_categories->category_code = $this->input->post('category_code', TRUE);
                 $m_categories->category_name = $this->input->post('category_name', TRUE);
                 $m_categories->category_desc = $this->input->post('category_desc', TRUE);
                 $m_categories->save();
@@ -67,7 +66,6 @@ class categories extends CORE_Controller
                 $m_categories=$this->categories_model;
 
                 $category_id=$this->input->post('category_id',TRUE);
-                $m_categories->category_code=$this->input->post('category_code',TRUE);
                 $m_categories->category_name=$this->input->post('category_name',TRUE);
                 $m_categories->category_desc=$this->input->post('category_desc',TRUE);
 

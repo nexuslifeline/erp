@@ -30,7 +30,6 @@ class departments extends CORE_Controller {
             case 'create':
                 $m_departments = $this->departments_model;
 
-                $m_departments->department_code = $this->input->post('department_code', TRUE);
                 $m_departments->department_name = $this->input->post('department_name', TRUE);
                 $m_departments->department_desc = $this->input->post('department_desc', TRUE);
                 $m_departments->save();
@@ -65,7 +64,6 @@ class departments extends CORE_Controller {
                 $m_departments=$this->departments_model;
 
                 $department_id=$this->input->post('department_id',TRUE);
-                $m_departments->department_code=$this->input->post('department_code',TRUE);
                 $m_departments->department_name=$this->input->post('department_name',TRUE);
                 $m_departments->department_desc=$this->input->post('department_desc',TRUE);
 
