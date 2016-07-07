@@ -40,7 +40,7 @@ class categories extends CORE_Controller
                 $category_id = $m_categories->last_insert_id();
 
                 $response['title'] = 'Success!';
-                $response['stat'] = 'Success';
+                $response['stat'] = 'success';
                 $response['msg'] = 'category information successfully created.';
                 $response['row_added'] = $m_categories->get_category_list($category_id);
                 echo json_encode($response);

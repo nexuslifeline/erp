@@ -41,7 +41,7 @@
 
                         <li><a href="#"><i class="ti ti-control-shuffle"></i><span>Masterfiles</span></a>
                             <ul class="acc-menu">
-                                <li><a href="#">Product Management</a></li>
+                                <li><a href="products">Product Management</a></li>
                                 <li><a href="suppliers">Supplier Management</a></li>
                                 <li><a href="customers">Customer Management</a></li>
                                 <li><a href="categories">Category Management</a></li>
