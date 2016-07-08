@@ -117,66 +117,92 @@
                                             </div>
 
                                             <div class="panel-body">
+                                                <div class="">
                                                 <h3>General</h3>
                                                 <hr/>
                                                 &nbsp;
+                                                </div>
                                                 <form id="frm_product" role="form" class="form-horizontal row-border">
                                                     <div class="form-group">
-                                                        <label class="col-md-2 control-label">Product Code :</label>
-                                                        <div class="col-md-9">
+                                                        <label class="col-md-2 col-md-offset-1 control-label">Product Code :</label>
+                                                        <div class="col-md-7">
                                                             <div class="input-group">
                                                                                     <span class="input-group-addon">
                                                                                         <i class="fa fa-file-code-o"></i>
                                                                                     </span>
-                                                                <input type="text" name="product_code" class="form-control" readonly>
+                                                                <input type="text" name="product_code" class="form-control" value="" readonly>
                                                             </div>
                                                         </div>
                                                     </div>
 
                                                     <div class="form-group">
-                                                        <label class="col-md-2 control-label">* Description 1 :</label>
-                                                        <div class="col-md-9">
+                                                        <label class="col-md-2 col-md-offset-1 control-label">* Description 1 :</label>
+                                                        <div class="col-md-7">
                                                             <textarea name="product_desc" class="form-control" data-error-msg="product Description is required!" placeholder="Description" required></textarea>
                                                         </div>
                                                     </div>
 
                                                     <div class="form-group">
-                                                        <label class="col-md-2 control-label">Description 2 :</label>
-                                                        <div class="col-md-9">
+                                                        <label class="col-md-2 col-md-offset-1 control-label">Description 2 :</label>
+                                                        <div class="col-md-7">
                                                             <textarea name="product_desc1" class="form-control" placeholder="Description"></textarea>
                                                         </div>
                                                     </div>
 
                                                     <div class="form-group">
-                                                        <label class="col-md-2 control-label">* Category :</label>
-                                                        <div class="col-md-9">
-                                                            <select name="product_cat" id="" class="form-control"></select>
+                                                        <label class="col-md-2 col-md-offset-1 control-label">* Category :</label>
+                                                        <div class="col-md-7">
+                                                            <select name="product_cat" id="" class="form-control">
+                                                                <option value="">Select Category</option>
+                                                                <?php
+                                                                foreach($product_cat as $row)
+                                                                {
+                                                                    echo '<option value="'.$row->category_name.'">'.$row->category_name.'</option>';
+                                                                }
+                                                                ?>
+                                                            </select>
                                                         </div>
                                                     </div>
 
                                                     <div class="form-group">
-                                                        <label class="col-md-2 control-label">* Department :</label>
-                                                        <div class="col-md-9">
-                                                            <select name="product_dept" id="" class="form-control"></select>
+                                                        <label class="col-md-2 col-md-offset-1 control-label">* Department :</label>
+                                                        <div class="col-md-7">
+                                                            <select name="product_dept" id="" class="form-control">
+                                                                <option value="">Select Department</option>
+                                                                <?php
+                                                                foreach($product_dept as $row)
+                                                                {
+                                                                    echo '<option value="'.$row->department_name.'">'.$row->department_name.'</option>';
+                                                                }
+                                                                ?>
+                                                            </select>
                                                         </div>
                                                     </div>
 
                                                     <div class="form-group">
-                                                        <label class="col-md-2 control-label">* Unit :</label>
-                                                        <div class="col-md-9">
-                                                            <select name="product_unit" id="" class="form-control"></select>
+                                                        <label class="col-md-2 col-md-offset-1 control-label">* Unit :</label>
+                                                        <div class="col-md-7">
+                                                            <select name="product_unit" id="" class="form-control">
+                                                                <option value="">Select Unit</option>
+                                                                <?php
+                                                                foreach($product_unit as $row)
+                                                                {
+                                                                    echo '<option value="'.$row->unit_name.'">'.$row->unit_name.'</option>';
+                                                                }
+                                                                ?>
+                                                            </select>
                                                         </div>
                                                     </div>
 
                                                     <div class="form-group">
-                                                        <div class="col-md-9 col-md-offset-2">
+                                                        <div class="col-md-7 col-md-offset-3">
                                                             <input type="checkbox" name="product_vat"> <b>Vat Exempt</b>
                                                         </div>
                                                     </div>
 
                                                     <div class="form-group">
-                                                        <label class="col-md-2 control-label">Equivalent Points :</label>
-                                                        <div class="col-md-9">
+                                                        <label class="col-md-2 col-md-offset-1 control-label">Equivalent Points :</label>
+                                                        <div class="col-md-7">
                                                             <input type="text" name="equivalent_points" class="form-control">
                                                         </div>
                                                     </div>
@@ -186,23 +212,23 @@
                                                     &nbsp;
 
                                                     <div class="form-group">
-                                                        <label class="col-md-2 control-label">Warn Qty :</label>
-                                                        <div class="col-md-9">
+                                                        <label class="col-md-2 col-md-offset-1 control-label">Warn Qty :</label>
+                                                        <div class="col-md-7">
                                                             <input type="text" name="product_warn" class="form-control">
                                                         </div>
                                                     </div>
 
                                                     <div class="form-group">
-                                                        <label class="col-md-2 control-label">Ideal Qty :</label>
-                                                        <div class="col-md-9">
+                                                        <label class="col-md-2 col-md-offset-1 control-label">Ideal Qty :</label>
+                                                        <div class="col-md-7">
                                                             <input type="text" name="product_ideal" class="form-control">
                                                         </div>
                                                     </div>
 
                                                     <div class="form-group">
-                                                        <div class="col-md-9 col-md-offset-2">
+                                                        <div class="col-md-7 col-md-offset-3">
                                                             <input type="radio" name="product_radio"> <b>Inventory</b>
-                                                            <input type="radio" name="product_radio"> <b>Non-Inventory</b>
+                                                            <input type="radio" name="product_radio" style="margin-left: 10px;"> <b>Non-Inventory</b>
                                                         </div>
                                                     </div>
 
@@ -211,50 +237,50 @@
                                                     &nbsp;
 
                                                     <div class="form-group">
-                                                        <label class="col-md-2 control-label">Purchase Cost :</label>
-                                                        <div class="col-md-9">
+                                                        <label class="col-md-2 col-md-offset-1 control-label">Purchase Cost :</label>
+                                                        <div class="col-md-7">
                                                             <input type="text" name="purchase_cost" class="form-control">
                                                         </div>
                                                     </div>
 
                                                     <div class="form-group">
-                                                        <label class="col-md-2 control-label">Markup Percent :</label>
-                                                        <div class="col-md-9">
+                                                        <label class="col-md-2 col-md-offset-1 control-label">Markup Percent :</label>
+                                                        <div class="col-md-7">
                                                             <input type="text" name="markup_percent" class="form-control">
                                                         </div>
                                                     </div>
 
                                                     <div class="form-group">
-                                                        <label class="col-md-2 control-label">Sale Price :</label>
-                                                        <div class="col-md-9">
+                                                        <label class="col-md-2 col-md-offset-1 control-label">Sale Price :</label>
+                                                        <div class="col-md-7">
                                                             <input type="text" name="sale_price" class="form-control">
                                                         </div>
                                                     </div>
 
                                                     <div class="form-group">
-                                                        <label class="col-md-2 control-label">Whole Sale Price :</label>
-                                                        <div class="col-md-9">
+                                                        <label class="col-md-2 col-md-offset-1 control-label">Whole Sale Price :</label>
+                                                        <div class="col-md-7">
                                                             <input type="text" name="whole_sale" class="form-control">
                                                         </div>
                                                     </div>
 
                                                     <div class="form-group">
-                                                        <label class="col-md-2 control-label">Retailer Price :</label>
-                                                        <div class="col-md-9">
+                                                        <label class="col-md-2 col-md-offset-1 control-label">Retailer Price :</label>
+                                                        <div class="col-md-7">
                                                             <input type="text" name="retailer_price" class="form-control">
                                                         </div>
                                                     </div>
 
                                                     <div class="form-group">
-                                                        <label class="col-md-2 control-label">Special Discount Price :</label>
-                                                        <div class="col-md-9">
+                                                        <label class="col-md-2 col-md-offset-1 control-label">Special Discount Price :</label>
+                                                        <div class="col-md-7">
                                                             <input type="text" name="special_disc" class="form-control">
                                                         </div>
                                                     </div>
 
                                                     <div class="form-group">
-                                                        <label class="col-md-2 control-label">Valued Customer Price :</label>
-                                                        <div class="col-md-9">
+                                                        <label class="col-md-2 col-md-offset-1 control-label">Valued Customer Price :</label>
+                                                        <div class="col-md-7">
                                                             <input type="text" name="valued_customer" class="form-control">
                                                         </div>
                                                     </div>
@@ -264,7 +290,7 @@
 
                                             <div class="panel-footer">
                                                 <div class="row">
-                                                    <div class="col-sm-10 col-sm-offset-2">
+                                                    <div class="col-sm-9 col-sm-offset-3">
                                                         <button id="btn_save" class="btn-primary btn" style="text-transform: capitalize;font-family: Tahoma, Georgia, Serif;""><span class=""></span>  Save Changes</button>
                                                         <button id="btn_cancel" class="btn-default btn" style="text-transform: capitalize;font-family: Tahoma, Georgia, Serif;"">Cancel</button>
                                                     </div>
@@ -492,7 +518,7 @@ $(document).ready(function(){
         var stat=true;
 
         $('div.form-group').removeClass('has-error');
-        $('input[required],textarea','#frm_product').each(function(){
+        $('input[required],textarea[required]','#frm_product').each(function(){
             if($(this).val()==""){
                 showNotification({title:"Error!",stat:"error",msg:$(this).data('error-msg')});
                 $(this).closest('div.form-group').addClass('has-error');
