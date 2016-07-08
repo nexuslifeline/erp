@@ -6,8 +6,8 @@ class Login extends CORE_Controller {
     function __construct()
     {
         parent::__construct('');
-        $this->load->model('users_model');
-        $this->load->model('user_groups_model');
+        $this->load->model('Users_model');
+        $this->load->model('User_groups_model');
     }
 
 
@@ -25,10 +25,10 @@ class Login extends CORE_Controller {
 
     function createDefaultUsers(){
 
-        $users=$this->users_model;
+        $users=$this->Users_model;
         $users->create_default_user();
 
-        $user_groups=$this->user_groups_model;
+        $user_groups=$this->User_groups_model;
         $user_groups->create_default_user_group();
 
     }
@@ -43,7 +43,7 @@ class Login extends CORE_Controller {
                     $uname=$this->input->post('uname');
                     $pword=$this->input->post('pword');
 
-                    $users=$this->users_model;
+                    $users=$this->Users_model;
                     $result=$users->authenticate_user($uname,$pword);
 
                     if($result->num_rows()>0){//valid username and pword
