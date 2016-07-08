@@ -89,8 +89,6 @@
                                                         <table id="tbl_categories" class="table table-striped table-bordered" cellspacing="0" width="100%">
                                                             <thead>
                                                             <tr>
-                                                                <th></th>
-                                                                <th>Category Code</th>
                                                                 <th>Category Name</th>
                                                                 <th>Category Description</th>
                                                                 <th><center>Action</center></th>
@@ -115,20 +113,8 @@
                                                     <div class="panel-body">
                                                         <form id="frm_category" role="form" class="form-horizontal row-border">
                                                             <div class="form-group">
-                                                                <label class="col-md-2 control-label">Category Code :</label>
-                                                                <div class="col-md-9">
-                                                                    <div class="input-group">
-                                                                                    <span class="input-group-addon">
-                                                                                        <i class="fa fa-file-code-o"></i>
-                                                                                    </span>
-                                                                        <input type="text" name="category_code" class="form-control" readonly>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="form-group">
-                                                                <label class="col-md-2 control-label">* Category Name :</label>
-                                                                <div class="col-md-9">
+                                                                <label class="col-md-2 col-md-offset-2 control-label">* Category Name :</label>
+                                                                <div class="col-md-4">
                                                                     <div class="input-group">
                                                                                     <span class="input-group-addon">
                                                                                         <i class="fa fa-users"></i>
@@ -139,18 +125,17 @@
                                                             </div>
 
                                                             <div class="form-group">
-                                                                <label class="col-md-2 control-label">* Category Description :</label>
-                                                                <div class="col-md-9">
+                                                                <label class="col-md-2 col-md-offset-2 control-label">* Category Description :</label>
+                                                                <div class="col-md-4">
                                                                     <textarea name="category_desc" class="form-control" data-error-msg="Category Description is required!" placeholder="Description" required></textarea>
                                                                 </div>
-                                                            </div>
-                                                            <br /><br />
+                                                            </div><br/>
                                                         </form>
                                                     </div>
 
                                                     <div class="panel-footer">
                                                         <div class="row">
-                                                            <div class="col-sm-10 col-sm-offset-2">
+                                                            <div class="col-sm-6 col-sm-offset-4">
                                                                 <button id="btn_save" class="btn-primary btn" style="text-transform: capitalize;font-family: Tahoma, Georgia, Serif;""><span class=""></span>  Save Changes</button>
                                                                 <button id="btn_cancel" class="btn-default btn" style="text-transform: capitalize;font-family: Tahoma, Georgia, Serif;"">Cancel</button>
                                                             </div>
@@ -222,18 +207,11 @@
                 "bLengthChange":false,
                 "ajax" : "categories/transaction/list",
                 "columns": [
+
+                    { targets:[0],data: "category_name" },
+                    { targets:[1],data: "category_desc" },
                     {
-                        "targets": [0],
-                        "class":          "details-control",
-                        "orderable":      false,
-                        "data":           null,
-                        "defaultContent": ""
-                    },
-                    { targets:[1],data: "category_code" },
-                    { targets:[2],data: "category_name" },
-                    { targets:[3],data: "category_desc" },
-                    {
-                        targets:[4],
+                        targets:[2],
                         render: function (data, type, full, meta){
                             var btn_edit='<button class="btn btn-default btn-sm" name="edit_info"  style="margin-left:-15px;" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil"></i> </button>';
                             var btn_trash='<button class="btn btn-default btn-sm" name="remove_info" style="margin-right:0px;" data-toggle="tooltip" data-placement="top" title="Move to trash"><i class="fa fa-trash-o"></i> </button>';
@@ -452,9 +430,6 @@
             '<thead>' +
             '</thead>' +
             '<tbody>' +
-            '<tr>' +
-            '<td width="20%">Category Code : </td><td width="50%"><b>'+ d.category_code+'</b></td>' +
-            '</tr>' +
             '<tr>' +
             '<td>Category Name : </td><td><b>'+ d.category_name+'</b></td>' +
             '</tr>' +
