@@ -15,10 +15,10 @@ class Login extends CORE_Controller {
     {
         $this->createDefaultUsers();
 
-        $data['def_css_files']=$this->load->view('template/assets/css_files','',TRUE);
+        $data['_def_css_files']=$this->load->view('template/assets/css_files','',TRUE);
         $data['_def_js_files']=$this->load->view('template/assets/js_files','',true);
 
-        $this->load->view('login_view');
+        $this->load->view('login_view',$data);
 
     }
 
